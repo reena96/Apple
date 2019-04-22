@@ -1,10 +1,10 @@
+import com.uber.h3core.H3Core;
+
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import com.uber.h3core.*;
 
 public class Main {
 
@@ -25,8 +25,10 @@ public class Main {
 
 
         List<Cab> cabList = cabCreation.createCabs(hexagon_map);
+        Simulation simulator = new Simulation();
+        simulator.simulate(cabList, hexagon_map);
 
-        }
+    }
 
 
     private static void updateCabs(Cab cab, double _lati, double _long) throws IOException {
@@ -48,8 +50,6 @@ public class Main {
     }
 
 
-
-
-    }
+}
 
 

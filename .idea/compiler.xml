@@ -9,5 +9,8 @@
         <module name="apple-resource-seach" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="apple-resource-seach" target="7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
