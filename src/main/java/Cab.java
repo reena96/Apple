@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class Cab {
 
     Location current;
@@ -12,7 +10,9 @@ public class Cab {
     double penalty;
     double total_waiting_time;
 
+    Cab(){
 
+    }
     Cab(String current_hexagon_id, String current_time, Location current) {
         this.current_hexagon_id = current_hexagon_id;
         this.current_time = current_time;

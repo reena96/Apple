@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PreProcess {
 
@@ -39,7 +41,7 @@ public class PreProcess {
         return hexagon_map;
     }
 
-    private Hexagon createHexagon(String hexagon_id, String[] metadata, Hexagon hexagonOld) throws ParseException {
+    public Hexagon createHexagon(String hexagon_id, String[] metadata, Hexagon hexagonOld) throws ParseException {
 
 
         List<String> neighbors = helper.readNeighborsList(hexagon_id, metadata[6]);
