@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class PreProcess {
 
@@ -45,9 +46,10 @@ public class PreProcess {
 
 
         List<String> neighbors = helper.readNeighborsList(hexagon_id, metadata[6]);
-        int expectedCabs = Integer.parseInt((metadata[5]));
+//        System.out.println(metadata[5] + Objects.equals(metadata[5], "NULL"));
+        int expectedCabs = Integer.parseInt((Objects.equals(metadata[5], "NULL") ? "0" : metadata[5]));
         String timestamp = metadata[4];
-        int day_of_week = Integer.parseInt(metadata[3]);
+        int day_of_week = Integer.parseInt((Objects.equals(metadata[3], "NULL") ? "0" : metadata[3]));
         double center_long = Double.parseDouble(metadata[2]);
         double center_lat = Double.parseDouble(metadata[1]);
 

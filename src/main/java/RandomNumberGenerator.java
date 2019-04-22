@@ -95,6 +95,10 @@ public class RandomNumberGenerator {
         int r = (int) (Math.random() * prefix[a.length - 1]) + prefix[0];
         //findCeil convert the random value to index of original array.
         int indexCeil = findCeil(prefix, r, 0, a.length - 1);
+        if(indexCeil>=a.length)
+            return a[a.length-1];
+        else if(indexCeil<=0)
+            return a[0];
         return a[indexCeil];
     }
 }

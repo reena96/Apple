@@ -20,11 +20,11 @@ public class Main {
         Map<String, Hexagon> hexagon_map = loadHexagonData.readHexagonsFromCSV("src/main/java/data/probability.csv");
 
         // Initialize cabs & obtain list of cabs
-        int noOfCabs = 100;
+        int noOfCabs = 2000;
         CabCreation cabCreation = new CabCreation(noOfCabs, startTime);
 
-
         List<Cab> cabList = cabCreation.createCabs(hexagon_map);
+
         Simulation simulator = new Simulation();
         simulator.simulate(cabList, hexagon_map);
 
@@ -32,15 +32,6 @@ public class Main {
 
 
     private static void updateCabs(Cab cab, double _lati, double _long) throws IOException {
-
-
-//        H3Core h3 = H3Core.newInstance();
-//
-//        double lat = 37.775938728915946;
-//        double lng = -122.41795063018799;
-//        int res = 9;
-//
-//        String hexAddr = h3.geoToH3Address(lat, lng, res);
 
         H3Core h3 = H3Core.newInstance();
 
