@@ -1,3 +1,6 @@
+import com.uber.h3core.H3Core;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +24,7 @@ public class Utilities {
         String formattedDate = dateFormat.format(calendar.getTime());
         return formattedDate;
     }
+
     public List<String> readNeighborsList(String hexagon_id, String neighbors) {
 
         neighbors = neighbors.replace("{", "");
@@ -36,5 +40,13 @@ public class Utilities {
             neighbors_list.add(list[i]);
         }
         return neighbors_list;
+    }
+
+    public String getHexFromGeo(double latitude, double longitude) throws IOException {
+
+        H3Core h3 = H3Core.newInstance();
+
+        return h3.geoToH3Address(latitude, longitude, 9);
+
     }
 }

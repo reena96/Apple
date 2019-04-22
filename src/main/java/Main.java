@@ -1,12 +1,13 @@
-import com.uber.h3core.H3Core;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 public class Main {
+
+    Utilities helper = new Utilities();
 
     public static void main(String[] args) throws ParseException, IOException {
         Date startTime = new Date();
@@ -14,7 +15,7 @@ public class Main {
 
         // obtain Resource list - given CSV of rides between input startTime and endTime,
         ResourceAddition resourceAddition = new ResourceAddition();
-        List<Resource> resources = resourceAddition.readResourcesFromCSV("src/main/java/data/sample_data.csv");
+        Queue<Resource> resources = resourceAddition.readResourcesFromCSV("src/main/java/data/sample_data.csv");
 
         PreProcess loadHexagonData = new PreProcess();
         Map<String, Hexagon> hexagon_map = loadHexagonData.readHexagonsFromCSV("src/main/java/data/probability.csv");
@@ -28,19 +29,14 @@ public class Main {
         Simulation simulator = new Simulation();
         simulator.simulate(cabList, hexagon_map);
 
+        Result result = new Result(300000);
+        Allocation.allocate(resources,cabList,600000,result);
     }
 
+    public void updateCurrentHex(Cab cab, double latitude, double longitude) throws IOException {
 
-    private static void updateCabs(Cab cab, double _lati, double _long) throws IOException {
-
-        H3Core h3 = H3Core.newInstance();
-
-        String _hex_id = h3.geoToH3Address(_lati, _long, 9);
-        cab.current_hexagon_id = _hex_id;
-
+        cab.current_hexagon_id = helper.getHexFromGeo(latitude, longitude);
     }
-
-
 }
 
 

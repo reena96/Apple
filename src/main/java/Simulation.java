@@ -54,7 +54,7 @@ public class Simulation {
                 int milliSeconds = Graphhopper.time(current_hexagon.center.latitude, current_hexagon.center.longitude, destination.latitude, destination.longitude);
 
                 cab.setDestination(destination_hex_id, 0, milliSeconds / (1000.0 * 60));
-                System.out.println("travel time: " + cab.current_travel_time);
+//                System.out.println("travel time: " + cab.current_travel_time);
             }
         }
     }

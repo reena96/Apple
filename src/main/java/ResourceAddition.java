@@ -6,15 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class ResourceAddition {
 
-    List<Resource> readResourcesFromCSV(String fileName) {
+    Queue<Resource> readResourcesFromCSV(String fileName) {
 
-        List<Resource> resources = new ArrayList<>();
+        Queue<Resource> resources = new LinkedList<>();
         Path pathToFile = Paths.get(fileName);
 
         try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {

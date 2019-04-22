@@ -7,6 +7,8 @@ public class Resource {
     Date pickup_time;
     Date drop_time;
     String hexagon_id;
+    double wait_time;
+
     Resource(Location pickup_location, Date pickup_time,
              Location drop_location, Date drop_time,
              String hexagon_id){
@@ -16,9 +18,4 @@ public class Resource {
         this.drop_time = drop_time;
         this.hexagon_id = hexagon_id;
     }
-
-
-
-
-    
 }
